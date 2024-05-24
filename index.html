@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        /* body section */
+
+        .gallery h2 {
+            color: #5A3E36; /* Brown color */
+        }
+        .body {
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .carousel-item {
+            min-height: 700px;
+            background: no-repeat center center scroll;
+            background-size: cover;
+        }
+        .carousel-caption {
+            margin-bottom: 12%;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            color: #5A3E36;
+        }
+
+        /* About section */
+        .about-section {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            color: #5A3E36;
+        }
+        .about-image {
+            max-width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+        .about-text {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 2s ease, transform 1.2s ease;
+        }
+        .about-section.show .about-image {
+            opacity: 1;
+        }
+        .about-section.show .about-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Services section */
+        .Service-main-div {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+            padding-top: 40px;
+            padding-bottom: 15%;
+        }
+        .circles {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .circledivs {
+            margin: 20px;
+            text-align: center;
+        }
+        .circle1, .circle2, .circle3, .circle4 {
+            height: 250px;
+            width: 250px;
+            border-radius: 50%;
+            border: none;
+            margin: auto;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .circle1:hover, .circle2:hover, .circle3:hover, .circle4:hover {
+            transform: scale(1.08);
+            transition-timing-function: ease-out;
+            transition-duration: 1.5s;
+            border: none;
+        }
+        .circle1 {
+            background-image: url('food.jpg');
+        }
+        .circle2 {
+            background-image: url('makeup.jpg');
+        }
+        .circle3 {
+            background-image: url('decoration.jpg');
+        }
+        .circle4 {
+            background-image: url('music.jpg');
+        }
+      
+        #servicestitle {
+            font-family: 'Brush Script MT', Brush Script Std, cursive;
+            font-size: 50px;
+            font-weight: lighter;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #5A3E36;
+        }
+        .caption {
+            font-family: 'Brush Script MT', Brush Script Std, cursive;
+            font-size: 30px;
+            color: #5A3E36;
+        }
+        @media only screen and (min-width: 728px) {
+            .circles {
+                flex-direction: row;
+            }
+            .circledivs {
+                height: 250px;
+                width: 250px;
+            }
+            .circle1, .circle2, .circle3, .circle4 {
+                height: 250px;
+                width: 250px;
+            }
+            #servicestitle {
+                font-size: 50px;
+            }
+            .caption {
+                font-size: 38px;
+            }
+        }
+        @media only screen and (min-width: 1024px) {
+            .circles {
+                margin-left: 0;
+                margin-right: 0;
+                flex-direction: row;
+            }
+            .circledivs {
+                height: 300px;
+                width: 300px;
+            }
+            .circle1, .circle2, .circle3, .circle4 {
+                height: 300px;
+                width: 300px;
+            }
+            #servicestitle {
+                font-size: 40px;
+            }
+            .caption {
+                font-size: 38px;
+            }
+        }
+        .filter-btn {
+            color: #5A3E36;
+            border-color: #5A3E36;
+        }
+        .filter-btn:hover {
+            background-color: #5A3E36;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="body">
+    <!-- Carousel Section -->
+    <div id="carouselIndicators" height="100%" class="carousel slide" data-ride="carousel" data-interval="2600">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('Bg1.jpg');"></div>
+            <div class="carousel-item" style="background-image: url('Bg2.jpg');"></div>
+            <div class="carousel-item" style="background-image: url('Bg3.jpg');"></div>
+            <div class="carousel-item" style="background-image: url('Bg4.jpg');"></div>
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+            <h2 class="search-heading">Find The Perfect Event Service</h2>
+            <p class="search-para">Search from hundreds of services to make your event special</p>
+        </div>
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- About section -->
+    <section class="about-section">
+        <div class="container ml-4">
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="about.jpg" alt="About Us Image" class="img-fluid rounded about-image">
+                </div>
+                <div class="col-md-7 about-text">
+                    <h2>About Us</h2>
+                    <p>Welcome to Stellar Occasions, your premier destination for exceptional event planning and management. With a passion for creativity and a dedication to excellence, we specialize in bringing your vision to life, no matter the occasion.</p>
+                    <p>From corporate gatherings to lavish weddings, our team of experienced professionals handles every detail with precision and care, ensuring that each event is a memorable and seamless experience for both you and your guests.</p>
+                    <p>At Stellar Occasions, we understand that every event is unique, which is why we tailor our services to meet your specific needs and preferences. Whether you're seeking full-service event planning or day-of coordination, we're here to make your dreams a reality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="Service-main-div">
+        <h1 id="servicestitle">Our Services</h1>
+        <div class="circles">
+            <div class="circledivs">
+                <a href="#"><button class="circle1"></button></a>   <br>
+                <p class="caption">Catering</p>
+            </div>
+            <div class="circledivs">
+                <a href="#"><button class="circle2"></button></a>   <br>
+                <p class="caption">Makeup</p>
+            </div>
+            <div class="circledivs">
+                <a href="#"><button class="circle3"></button></a>   <br>
+                <p class="caption">Decoration</p>
+            </div>
+            <div class="circledivs">
+                <a href="#"><button class="circle4"></button></a>   <br>
+                <p class="caption">Music</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery container">
+        <h2 class="text-center my-4">Gallery</h2>
+        <div class="text-center mb-4">
+            <button class="btn btn-outline-primary filter-btn" data-filter="all">All</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="marriage">Marriage</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="birthday">Birthday</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="decoration">Decoration</button>
+        </div>
+        <div class="row">
+            <div class="col-md-4 gallery-item" data-category="marriage">
+                <img src="wedding1.jpg" alt="Marriage Image 1" class="img-fluid">
+            </div>
+            <div class="col-md-4 gallery-item" data-category="marriage">
+                <img src="wedding2.jpg" alt="Marriage Image 2" class="img-fluid">
+            </div>
+            <div class="col-md-4 gallery-item" data-category="marriage">
+                <img src="wedding3.jpg" alt="Marriage Image 3" class="img-fluid">
+            </div>
+            <div class="col-md-4 gallery-item" data-category="birthday">
+                <img src="Birthday1.jpg" alt="Birthday Image 1" class="img-fluid">
+            </div>
+            <div class="col-md-4 gallery-item" data-category="birthday">
+                <img src="Birthday2.jpg" alt="Birthday Image 2" class="img-fluid">
+            </div>
+            <div class="col-md-4 gallery-item" data-category="decoration">
+                <img src="Concert1.jpg" alt="Decoration Image 1" class="img-fluid">
+            </div>
+            <div class="col-md-4 gallery-item" data-category="decoration">
+                <img src="Concert2.jpg" alt="Decoration Image 2" class="img-fluid">
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // JavaScript to trigger transitions when the about section comes into view
+    document.addEventListener("DOMContentLoaded", function() {
+        var aboutSection = document.querySelector(".about-section");
+        var aboutSectionPosition = aboutSection.offsetTop;
+        var windowHeight = window.innerHeight;
+
+        function checkScroll() {
+            var scrollPosition = window.scrollY;
+            if (scrollPosition + windowHeight >= aboutSectionPosition) {
+                aboutSection.classList.add("show");
+                window.removeEventListener("scroll", checkScroll);
+            }
+        }
+
+        window.addEventListener("scroll", checkScroll);
+    });
+
+    // JavaScript for gallery filter
+    document.addEventListener("DOMContentLoaded", function() {
+        var filterButtons = document.querySelectorAll('.filter-btn');
+        var galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var filter = this.getAttribute('data-filter');
+                galleryItems.forEach(function(item) {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
